@@ -8,6 +8,7 @@ document.getElementById("align-center").addEventListener("click", function(){
         textarea.style.textAlign = 'center';
         document.getElementById('align-left').style.border = "none";
         document.getElementById('align-right').style.border = "none";
+        document.getElementById('align-justify').style.border = "none";
     }
     else{
         imgIClicked.style.border = "none";
