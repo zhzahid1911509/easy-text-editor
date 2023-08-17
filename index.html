@@ -6,38 +6,56 @@
     <title>Easy Text Editor</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            font-family:;
+        }
+    </style>
 </head>
 <body>
     <div class="text-center text-[36px] font-semibold text-sky-700">
         <h2>Easy Text Editor</h2> 
     </div>
-    <div class="flex justify-center gap-4 mt-4 flex-wrap p-3 border border-sky-600 rounded-lg">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-bold-32.png" alt="" id="bold-text">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-italic-32.png" alt="" id="italic-text">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-underline-32.png" alt="" id="underline-text">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-left-align-32.png" alt="" id="align-left">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-center-align-32.png" alt="" id="align-center">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-right-align-32.png" alt="" id="align-right">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-align-justify-32.png" alt="" id="align-justify">
-        <input type="number" name="" id="font-size" placeholder="Font Size in px" min="10" style="padding-left: 5px;" value="10">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-font-32.png" alt="" id="font-styles">
-        <input type="color" name="" id="text-color">
-        <img class="cursor-pointer w-7 h-7" src="icons/icons8-link-32.png" alt="" id="link">
+    <div class="flex justify-center items-center gap-4 mt-4 flex-wrap p-3 border border-sky-600 rounded-lg">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-bold-32.png" alt="" id="bold-text" title="Bold Text">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-italic-32.png" alt="" id="italic-text" title="Italic Text">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-underline-32.png" alt="" id="underline-text" title="Underline">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-left-align-32.png" alt="" id="align-left" title="Left Align">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-center-align-32.png" alt="" id="align-center" title="Center">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-right-align-32.png" alt="" id="align-right" title="Right Align">
+        <img class="cursor-pointer w-7 h-7" src="icons/icons8-align-justify-32.png" alt="" id="align-justify" title="Justify">
+        <input type="number" name="" id="font-size" placeholder="Font Size in pt" min="10" style="padding-left: 5px;">
+        <div class="flex gap-2 p-1 border border-black rounded-lg">
+            <img class="cursor-pointer w-7 h-7" src="icons/icons8-font-32.png" alt="" id="font-styles" title="Font Family">
+            <select name="" id="fonts-list">
+                <option value="Arial">Arial</option>
+                <option value="Calibri">Calibri</option>
+                <option value="Cambria">Cambria</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Cursive">Cursive</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Lucida Sans">Lucida Sans</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+        </div>
+        
+        <input type="color" name="" id="text-color" title="Text Color">
+        <!-- <img class="cursor-pointer w-7 h-7" src="icons/icons8-link-32.png" alt="" id="link"> -->
     </div>
     <div class="flex flex-col justify-center gap-2 mt-4 p-2">
-        <textarea class="rounded-lg" name="" cols="70" rows="10" wrap="soft" id="text-editor" style="padding: 5px; border: 1px solid black;"></textarea>
+        <textarea class="rounded-lg" name="" cols="70" rows="10" wrap="soft" id="text-editor" placeholder="Write here..." style="padding: 5px; border: 1px solid black;"></textarea>
         <div class="flex gap-2">
             <button class="btn w-1/3 p-3 md:w-1/6" style="border: 1px solid burlywood; background-color: rgb(242, 181, 107);" type="submit" id="copyButton">Copy</button>
             <button class="btn w-1/3 p-3 md:w-1/6" style="border: 1px solid burlywood; background-color: rgb(242, 181, 107);" type="submit" id="clearButton">Clear All</button>
-        </div>
-        
-        
-        
+        </div> 
     </div>
-    
-    
+
     <script>
         const textarea = document.getElementById('text-editor');
+        textarea.style.fontFamily = 'Calibri';
+        textarea.style.fontSize = '12pt';
         function getValueOfId(id) {
             const element = document.getElementById(id);
             return element;
@@ -45,6 +63,10 @@
 
         document.getElementById('clearButton').addEventListener('click', function() {
             textarea.value = '';
+        })
+
+        document.getElementById('fonts-list').addEventListener('click', function() {
+            textarea.style.fontFamily = document.getElementById('fonts-list').value;
         })
 
     </script>
