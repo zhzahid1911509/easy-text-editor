@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Text Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex justify-center gap-4 mt-4 flex-wrap p-2">
+        <img src="icons/icons8-bold-32.png" alt="" id="bold-text">
+        <img src="icons/icons8-italic-32.png" alt="" id="italic-text">
+        <img src="icons/icons8-underline-32.png" alt="" id="underline-text">
+        <img src="icons/icons8-left-align-32.png" alt="" id="align-left">
+        <img src="icons/icons8-center-align-32.png" alt="" id="align-center">
+        <img src="icons/icons8-right-align-32.png" alt="" id="align-right">
+        <input type="number" name="" id="font-size" placeholder="Font Size in px" min="10" style="padding-left: 5px;">
+        <img src="icons/icons8-font-32.png" alt="" id="font-styles">
+        <img src="icons/icons8-link-32.png" alt="" id="link">
+    </div>
+    <div class="flex justify-center mt-4 p-2">
+        <textarea name="" cols="70" rows="10" wrap="hard" id="text-editor" style="padding: 4px;"></textarea>
+    </div>
+    <script>
+        let countB = 0;
+        let countI = 0;
+        let countU = 0;
+        let countAl = 0;
+        let countAc = 0;
+        let countAr = 0;
+        const textarea = document.getElementById('text-editor');
+        function getValueOfId(id) {
+            const element = document.getElementById(id);
+            return element;
+        }
+        //make text bold
+        document.getElementById("bold-text").addEventListener("click", function(){
+            countB++;
+           
+            const imgBClicked = getValueOfId("bold-text");
+            if(countB%2 != 0){
+                imgBClicked.style.border = "1px solid black";
+                textarea.style.fontWeight = "bold";
+            }
+            else{
+                imgBClicked.style.border = "none";
+                textarea.style.fontWeight = "normal";
+            }
+            
+        });
+        //make text italic
+        document.getElementById("italic-text").addEventListener("click", function(){
+            countI++;
+            const imgIClicked = getValueOfId("italic-text");
+            if(countI%2 != 0){
+                imgIClicked.style.border = "1px solid black";
+                textarea.style.fontStyle = "italic";
+            }
+            else{
+                imgIClicked.style.border = "none";
+                textarea.style.fontStyle = "normal";
+            }
+        });
+        //make text underlined
+
+        document.getElementById("underline-text").addEventListener("click", function(){
+            countU++;
+            const imgIClicked = getValueOfId("underline-text");
+            if(countU%2 != 0){
+                imgIClicked.style.border = "1px solid black";
+                textarea.style.textDecoration = "underline";
+            }
+            else{
+                imgIClicked.style.border = "none";
+                textarea.style.textDecoration = "none";
+            }
+        });
+
+        document.getElementById("align-left").addEventListener("click", function(){
+            countAl++;
+            const imgIClicked = getValueOfId("align-left");
+            if(countAl%2 != 0){
+                imgIClicked.style.border = "1px solid black";
+                textarea.style.textAlign = 'left';
+            }
+            else{
+                imgIClicked.style.border = "none";
+                
+            }
+        });
+
+        document.getElementById("align-right").addEventListener("click", function(){
+            countAr++;
+            const imgIClicked = getValueOfId("align-right");
+            if(countAr%2 != 0){
+                imgIClicked.style.border = "1px solid black";
+                textarea.style.textAlign = 'right';
+            }
+            else{
+                imgIClicked.style.border = "none";
+                textarea.style.textAlign = 'left';
+            }
+        });
+
+        document.getElementById("align-center").addEventListener("click", function(){
+            countAc++;
+            const imgIClicked = getValueOfId("align-center");
+            if(countAc%2 != 0){
+                imgIClicked.style.border = "1px solid black";
+                textarea.style.textAlign = 'center';
+            }
+            else{
+                imgIClicked.style.border = "none";
+                textarea.style.textAlign = 'left';
+            }
+        });
+
+        document.getElementById("font-size").addEventListener("input", function(){
+            const fontInput = getValueOfId("font-size");
+            textarea.style.fontSize = fontInput.value + 'px';  
+        });
+        
+    </script>
+</body>
+</html>
